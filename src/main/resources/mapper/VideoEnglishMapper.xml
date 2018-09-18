@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easyenglish.dao.VideoEnglishMapper" >
+  <resultMap id="BaseResultMap" type="com.easyenglish.dto.VideoEnglish" >
+    <id column="tv_id" property="tvId" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="upload_admin" property="uploadAdmin" jdbcType="INTEGER" />
+    <result column="digest" property="digest" jdbcType="VARCHAR" />
+    <result column="read_count" property="readCount" jdbcType="INTEGER" />
+    <result column="point" property="point" jdbcType="INTEGER" />
+    <result column="like_count" property="likeCount" jdbcType="INTEGER" />
+    <result column="video_url" property="videoUrl" jdbcType="VARCHAR" />
+    <result column="cover_url" property="coverUrl" jdbcType="VARCHAR" />
+    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="upload_time" property="uploadTime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="part" property="part" jdbcType="VARCHAR" />
+    <result column="page" property="page" jdbcType="INTEGER" />
+    <result column="textbook" property="textbook" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.easyenglish.dto.VideoEnglish" extends="BaseResultMap" >
+    <result column="text" property="text" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tv_id, title, author, upload_admin, digest, read_count, point, like_count, video_url, 
+    cover_url, img_url, create_time, upload_time, type, grade, unit, part, page, textbook, 
+    update_time, status, remark
+  </sql>
+  <sql id="Blob_Column_List" >
+    text
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.easyenglish.dto.VideoEnglishExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from video_english
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easyenglish.dto.VideoEnglishExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from video_english
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from video_english
+    where tv_id = #{tvId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from video_english
+    where tv_id = #{tvId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.easyenglish.dto.VideoEnglishExample" >
+    delete from video_english
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.easyenglish.dto.VideoEnglish" >
+    insert into video_english (tv_id, title, author, 
+      upload_admin, digest, read_count, 
+      point, like_count, video_url, 
+      cover_url, img_url, create_time, 
+      upload_time, type, grade, 
+      unit, part, page, textbook, 
+      update_time, status, remark, 
+      text)
+    values (#{tvId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
+      #{uploadAdmin,jdbcType=INTEGER}, #{digest,jdbcType=VARCHAR}, #{readCount,jdbcType=INTEGER}, 
+      #{point,jdbcType=INTEGER}, #{likeCount,jdbcType=INTEGER}, #{videoUrl,jdbcType=VARCHAR}, 
+      #{coverUrl,jdbcType=VARCHAR}, #{imgUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{uploadTime,jdbcType=TIMESTAMP}, #{type,jdbcType=INTEGER}, #{grade,jdbcType=INTEGER}, 
+      #{unit,jdbcType=VARCHAR}, #{part,jdbcType=VARCHAR}, #{page,jdbcType=INTEGER}, #{textbook,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{text,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easyenglish.dto.VideoEnglish" >
+    insert into video_english
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tvId != null" >
+        tv_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="uploadAdmin != null" >
+        upload_admin,
+      </if>
+      <if test="digest != null" >
+        digest,
+      </if>
+      <if test="readCount != null" >
+        read_count,
+      </if>
+      <if test="point != null" >
+        point,
+      </if>
+      <if test="likeCount != null" >
+        like_count,
+      </if>
+      <if test="videoUrl != null" >
+        video_url,
+      </if>
+      <if test="coverUrl != null" >
+        cover_url,
+      </if>
+      <if test="imgUrl != null" >
+        img_url,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="uploadTime != null" >
+        upload_time,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="unit != null" >
+        unit,
+      </if>
+      <if test="part != null" >
+        part,
+      </if>
+      <if test="page != null" >
+        page,
+      </if>
+      <if test="textbook != null" >
+        textbook,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="text != null" >
+        text,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tvId != null" >
+        #{tvId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadAdmin != null" >
+        #{uploadAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="digest != null" >
+        #{digest,jdbcType=VARCHAR},
+      </if>
+      <if test="readCount != null" >
+        #{readCount,jdbcType=INTEGER},
+      </if>
+      <if test="point != null" >
+        #{point,jdbcType=INTEGER},
+      </if>
+      <if test="likeCount != null" >
+        #{likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null" >
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="coverUrl != null" >
+        #{coverUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadTime != null" >
+        #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="part != null" >
+        #{part,jdbcType=VARCHAR},
+      </if>
+      <if test="page != null" >
+        #{page,jdbcType=INTEGER},
+      </if>
+      <if test="textbook != null" >
+        #{textbook,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null" >
+        #{text,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.easyenglish.dto.VideoEnglishExample" resultType="java.lang.Integer" >
+    select count(*) from video_english
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update video_english
+    <set >
+      <if test="record.tvId != null" >
+        tv_id = #{record.tvId,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.author != null" >
+        author = #{record.author,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uploadAdmin != null" >
+        upload_admin = #{record.uploadAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="record.digest != null" >
+        digest = #{record.digest,jdbcType=VARCHAR},
+      </if>
+      <if test="record.readCount != null" >
+        read_count = #{record.readCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.point != null" >
+        point = #{record.point,jdbcType=INTEGER},
+      </if>
+      <if test="record.likeCount != null" >
+        like_count = #{record.likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.videoUrl != null" >
+        video_url = #{record.videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coverUrl != null" >
+        cover_url = #{record.coverUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgUrl != null" >
+        img_url = #{record.imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.uploadTime != null" >
+        upload_time = #{record.uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.grade != null" >
+        grade = #{record.grade,jdbcType=INTEGER},
+      </if>
+      <if test="record.unit != null" >
+        unit = #{record.unit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.part != null" >
+        part = #{record.part,jdbcType=VARCHAR},
+      </if>
+      <if test="record.page != null" >
+        page = #{record.page,jdbcType=INTEGER},
+      </if>
+      <if test="record.textbook != null" >
+        textbook = #{record.textbook,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.text != null" >
+        text = #{record.text,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update video_english
+    set tv_id = #{record.tvId,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      author = #{record.author,jdbcType=VARCHAR},
+      upload_admin = #{record.uploadAdmin,jdbcType=INTEGER},
+      digest = #{record.digest,jdbcType=VARCHAR},
+      read_count = #{record.readCount,jdbcType=INTEGER},
+      point = #{record.point,jdbcType=INTEGER},
+      like_count = #{record.likeCount,jdbcType=INTEGER},
+      video_url = #{record.videoUrl,jdbcType=VARCHAR},
+      cover_url = #{record.coverUrl,jdbcType=VARCHAR},
+      img_url = #{record.imgUrl,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      upload_time = #{record.uploadTime,jdbcType=TIMESTAMP},
+      type = #{record.type,jdbcType=INTEGER},
+      grade = #{record.grade,jdbcType=INTEGER},
+      unit = #{record.unit,jdbcType=VARCHAR},
+      part = #{record.part,jdbcType=VARCHAR},
+      page = #{record.page,jdbcType=INTEGER},
+      textbook = #{record.textbook,jdbcType=INTEGER},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      text = #{record.text,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update video_english
+    set tv_id = #{record.tvId,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      author = #{record.author,jdbcType=VARCHAR},
+      upload_admin = #{record.uploadAdmin,jdbcType=INTEGER},
+      digest = #{record.digest,jdbcType=VARCHAR},
+      read_count = #{record.readCount,jdbcType=INTEGER},
+      point = #{record.point,jdbcType=INTEGER},
+      like_count = #{record.likeCount,jdbcType=INTEGER},
+      video_url = #{record.videoUrl,jdbcType=VARCHAR},
+      cover_url = #{record.coverUrl,jdbcType=VARCHAR},
+      img_url = #{record.imgUrl,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      upload_time = #{record.uploadTime,jdbcType=TIMESTAMP},
+      type = #{record.type,jdbcType=INTEGER},
+      grade = #{record.grade,jdbcType=INTEGER},
+      unit = #{record.unit,jdbcType=VARCHAR},
+      part = #{record.part,jdbcType=VARCHAR},
+      page = #{record.page,jdbcType=INTEGER},
+      textbook = #{record.textbook,jdbcType=INTEGER},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easyenglish.dto.VideoEnglish" >
+    update video_english
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadAdmin != null" >
+        upload_admin = #{uploadAdmin,jdbcType=INTEGER},
+      </if>
+      <if test="digest != null" >
+        digest = #{digest,jdbcType=VARCHAR},
+      </if>
+      <if test="readCount != null" >
+        read_count = #{readCount,jdbcType=INTEGER},
+      </if>
+      <if test="point != null" >
+        point = #{point,jdbcType=INTEGER},
+      </if>
+      <if test="likeCount != null" >
+        like_count = #{likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null" >
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="coverUrl != null" >
+        cover_url = #{coverUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrl != null" >
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadTime != null" >
+        upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="part != null" >
+        part = #{part,jdbcType=VARCHAR},
+      </if>
+      <if test="page != null" >
+        page = #{page,jdbcType=INTEGER},
+      </if>
+      <if test="textbook != null" >
+        textbook = #{textbook,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null" >
+        text = #{text,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where tv_id = #{tvId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.easyenglish.dto.VideoEnglish" >
+    update video_english
+    set title = #{title,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      upload_admin = #{uploadAdmin,jdbcType=INTEGER},
+      digest = #{digest,jdbcType=VARCHAR},
+      read_count = #{readCount,jdbcType=INTEGER},
+      point = #{point,jdbcType=INTEGER},
+      like_count = #{likeCount,jdbcType=INTEGER},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      cover_url = #{coverUrl,jdbcType=VARCHAR},
+      img_url = #{imgUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=VARCHAR},
+      part = #{part,jdbcType=VARCHAR},
+      page = #{page,jdbcType=INTEGER},
+      textbook = #{textbook,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      text = #{text,jdbcType=LONGVARCHAR}
+    where tv_id = #{tvId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easyenglish.dto.VideoEnglish" >
+    update video_english
+    set title = #{title,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      upload_admin = #{uploadAdmin,jdbcType=INTEGER},
+      digest = #{digest,jdbcType=VARCHAR},
+      read_count = #{readCount,jdbcType=INTEGER},
+      point = #{point,jdbcType=INTEGER},
+      like_count = #{likeCount,jdbcType=INTEGER},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      cover_url = #{coverUrl,jdbcType=VARCHAR},
+      img_url = #{imgUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=VARCHAR},
+      part = #{part,jdbcType=VARCHAR},
+      page = #{page,jdbcType=INTEGER},
+      textbook = #{textbook,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where tv_id = #{tvId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectAllByPage" resultMap="BaseResultMap">
+  select
+      <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from video_english
+    limit #{startPos},#{pageSize}
+  </select>
+
+  <select id="selectByKeyWord" resultMap="BaseResultMap">
+    SELECT *
+    FROM video_english
+    WHERE CONCAT(IFNULL(`title`,''),IFNULL(`author`,''),IFNULL(`digest`,''),IFNULL(`text`,''),IFNULL(`create_time`,''),IFNULL(`upload_time`,''),IFNULL(`unit`,''),IFNULL(`part`,''),IFNULL(`page`,''),IFNULL(`update_time`,''))IFNULL(`remark`,'')) LIKE '%#{keyWord}%'
+    limit #{startPos},#{pageSize}
+  </select>
+
+  <select id="selectCountByKeyWord" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM video_english
+    WHERE CONCAT(IFNULL(`title`,''),IFNULL(`author`,''),IFNULL(`digest`,''),IFNULL(`text`,''),IFNULL(`create_time`,''),IFNULL(`upload_time`,''),IFNULL(`unit`,''),IFNULL(`part`,''),IFNULL(`page`,''),IFNULL(`update_time`,''))IFNULL(`remark`,'')) LIKE '%#{keyWord}%'
+  </select>
+
+  <select id="selectAllByGradeByPage" parameterType="com.way.vo.Page" resultMap="BaseResultMap">
+    select *
+    from video_english
+
+    where grade = #{gradeId}
+    limit #{startPos},#{pageSize}
+  </select>
+
+
+  <select id="selectAllByTextBookByPage" parameterType="com.way.vo.Page" resultMap="BaseResultMap">
+    select *
+    from video_english
+    where textbook = #{textbook}
+    limit #{startPos},#{pageSize}
+  </select>
+
+
+
+</mapper>
