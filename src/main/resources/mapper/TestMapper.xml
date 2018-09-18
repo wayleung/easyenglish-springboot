@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easyenglish.dao.TestMapper" >
+  <resultMap id="BaseResultMap" type="com.easyenglish.dto.Test" >
+    <id column="test_id" property="testId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="textbook" property="textbook" jdbcType="INTEGER" />
+    <result column="total_mark" property="totalMark" jdbcType="REAL" />
+    <result column="do_count" property="doCount" jdbcType="INTEGER" />
+    <result column="read_count" property="readCount" jdbcType="INTEGER" />
+    <result column="like_count" property="likeCount" jdbcType="INTEGER" />
+    <result column="hand_in_count" property="handInCount" jdbcType="INTEGER" />
+    <result column="need_time" property="needTime" jdbcType="INTEGER" />
+    <result column="passed_mark" property="passedMark" jdbcType="REAL" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="test_status" property="testStatus" jdbcType="INTEGER" />
+    <result column="need_point" property="needPoint" jdbcType="INTEGER" />
+    <result column="get_point" property="getPoint" jdbcType="INTEGER" />
+    <result column="cover_url" property="coverUrl" jdbcType="VARCHAR" />
+    <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    test_id, name, type, grade, textbook, total_mark, do_count, read_count, like_count, 
+    hand_in_count, need_time, passed_mark, create_time, publish_time, test_status, need_point, 
+    get_point, cover_url, image_url, update_time, status, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easyenglish.dto.TestExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from test
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test
+    where test_id = #{testId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from test
+    where test_id = #{testId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.easyenglish.dto.TestExample" >
+    delete from test
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.easyenglish.dto.Test" >
+    insert into test (test_id, name, type, 
+      grade, textbook, total_mark, 
+      do_count, read_count, like_count, 
+      hand_in_count, need_time, passed_mark, 
+      create_time, publish_time, test_status, 
+      need_point, get_point, cover_url, 
+      image_url, update_time, status, 
+      remark)
+    values (#{testId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{grade,jdbcType=INTEGER}, #{textbook,jdbcType=INTEGER}, #{totalMark,jdbcType=REAL}, 
+      #{doCount,jdbcType=INTEGER}, #{readCount,jdbcType=INTEGER}, #{likeCount,jdbcType=INTEGER}, 
+      #{handInCount,jdbcType=INTEGER}, #{needTime,jdbcType=INTEGER}, #{passedMark,jdbcType=REAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{publishTime,jdbcType=TIMESTAMP}, #{testStatus,jdbcType=INTEGER}, 
+      #{needPoint,jdbcType=INTEGER}, #{getPoint,jdbcType=INTEGER}, #{coverUrl,jdbcType=VARCHAR}, 
+      #{imageUrl,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easyenglish.dto.Test" >
+    insert into test
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="testId != null" >
+        test_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="textbook != null" >
+        textbook,
+      </if>
+      <if test="totalMark != null" >
+        total_mark,
+      </if>
+      <if test="doCount != null" >
+        do_count,
+      </if>
+      <if test="readCount != null" >
+        read_count,
+      </if>
+      <if test="likeCount != null" >
+        like_count,
+      </if>
+      <if test="handInCount != null" >
+        hand_in_count,
+      </if>
+      <if test="needTime != null" >
+        need_time,
+      </if>
+      <if test="passedMark != null" >
+        passed_mark,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="publishTime != null" >
+        publish_time,
+      </if>
+      <if test="testStatus != null" >
+        test_status,
+      </if>
+      <if test="needPoint != null" >
+        need_point,
+      </if>
+      <if test="getPoint != null" >
+        get_point,
+      </if>
+      <if test="coverUrl != null" >
+        cover_url,
+      </if>
+      <if test="imageUrl != null" >
+        image_url,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="testId != null" >
+        #{testId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="textbook != null" >
+        #{textbook,jdbcType=INTEGER},
+      </if>
+      <if test="totalMark != null" >
+        #{totalMark,jdbcType=REAL},
+      </if>
+      <if test="doCount != null" >
+        #{doCount,jdbcType=INTEGER},
+      </if>
+      <if test="readCount != null" >
+        #{readCount,jdbcType=INTEGER},
+      </if>
+      <if test="likeCount != null" >
+        #{likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="handInCount != null" >
+        #{handInCount,jdbcType=INTEGER},
+      </if>
+      <if test="needTime != null" >
+        #{needTime,jdbcType=INTEGER},
+      </if>
+      <if test="passedMark != null" >
+        #{passedMark,jdbcType=REAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="testStatus != null" >
+        #{testStatus,jdbcType=INTEGER},
+      </if>
+      <if test="needPoint != null" >
+        #{needPoint,jdbcType=INTEGER},
+      </if>
+      <if test="getPoint != null" >
+        #{getPoint,jdbcType=INTEGER},
+      </if>
+      <if test="coverUrl != null" >
+        #{coverUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.easyenglish.dto.TestExample" resultType="java.lang.Integer" >
+    select count(*) from test
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update test
+    <set >
+      <if test="record.testId != null" >
+        test_id = #{record.testId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.grade != null" >
+        grade = #{record.grade,jdbcType=INTEGER},
+      </if>
+      <if test="record.textbook != null" >
+        textbook = #{record.textbook,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalMark != null" >
+        total_mark = #{record.totalMark,jdbcType=REAL},
+      </if>
+      <if test="record.doCount != null" >
+        do_count = #{record.doCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.readCount != null" >
+        read_count = #{record.readCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.likeCount != null" >
+        like_count = #{record.likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.handInCount != null" >
+        hand_in_count = #{record.handInCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.needTime != null" >
+        need_time = #{record.needTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.passedMark != null" >
+        passed_mark = #{record.passedMark,jdbcType=REAL},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.publishTime != null" >
+        publish_time = #{record.publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.testStatus != null" >
+        test_status = #{record.testStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.needPoint != null" >
+        need_point = #{record.needPoint,jdbcType=INTEGER},
+      </if>
+      <if test="record.getPoint != null" >
+        get_point = #{record.getPoint,jdbcType=INTEGER},
+      </if>
+      <if test="record.coverUrl != null" >
+        cover_url = #{record.coverUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageUrl != null" >
+        image_url = #{record.imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update test
+    set test_id = #{record.testId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      grade = #{record.grade,jdbcType=INTEGER},
+      textbook = #{record.textbook,jdbcType=INTEGER},
+      total_mark = #{record.totalMark,jdbcType=REAL},
+      do_count = #{record.doCount,jdbcType=INTEGER},
+      read_count = #{record.readCount,jdbcType=INTEGER},
+      like_count = #{record.likeCount,jdbcType=INTEGER},
+      hand_in_count = #{record.handInCount,jdbcType=INTEGER},
+      need_time = #{record.needTime,jdbcType=INTEGER},
+      passed_mark = #{record.passedMark,jdbcType=REAL},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      publish_time = #{record.publishTime,jdbcType=TIMESTAMP},
+      test_status = #{record.testStatus,jdbcType=INTEGER},
+      need_point = #{record.needPoint,jdbcType=INTEGER},
+      get_point = #{record.getPoint,jdbcType=INTEGER},
+      cover_url = #{record.coverUrl,jdbcType=VARCHAR},
+      image_url = #{record.imageUrl,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easyenglish.dto.Test" >
+    update test
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="textbook != null" >
+        textbook = #{textbook,jdbcType=INTEGER},
+      </if>
+      <if test="totalMark != null" >
+        total_mark = #{totalMark,jdbcType=REAL},
+      </if>
+      <if test="doCount != null" >
+        do_count = #{doCount,jdbcType=INTEGER},
+      </if>
+      <if test="readCount != null" >
+        read_count = #{readCount,jdbcType=INTEGER},
+      </if>
+      <if test="likeCount != null" >
+        like_count = #{likeCount,jdbcType=INTEGER},
+      </if>
+      <if test="handInCount != null" >
+        hand_in_count = #{handInCount,jdbcType=INTEGER},
+      </if>
+      <if test="needTime != null" >
+        need_time = #{needTime,jdbcType=INTEGER},
+      </if>
+      <if test="passedMark != null" >
+        passed_mark = #{passedMark,jdbcType=REAL},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="testStatus != null" >
+        test_status = #{testStatus,jdbcType=INTEGER},
+      </if>
+      <if test="needPoint != null" >
+        need_point = #{needPoint,jdbcType=INTEGER},
+      </if>
+      <if test="getPoint != null" >
+        get_point = #{getPoint,jdbcType=INTEGER},
+      </if>
+      <if test="coverUrl != null" >
+        cover_url = #{coverUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where test_id = #{testId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easyenglish.dto.Test" >
+    update test
+    set name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=INTEGER},
+      textbook = #{textbook,jdbcType=INTEGER},
+      total_mark = #{totalMark,jdbcType=REAL},
+      do_count = #{doCount,jdbcType=INTEGER},
+      read_count = #{readCount,jdbcType=INTEGER},
+      like_count = #{likeCount,jdbcType=INTEGER},
+      hand_in_count = #{handInCount,jdbcType=INTEGER},
+      need_time = #{needTime,jdbcType=INTEGER},
+      passed_mark = #{passedMark,jdbcType=REAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      test_status = #{testStatus,jdbcType=INTEGER},
+      need_point = #{needPoint,jdbcType=INTEGER},
+      get_point = #{getPoint,jdbcType=INTEGER},
+      cover_url = #{coverUrl,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where test_id = #{testId,jdbcType=INTEGER}
+  </update>
+</mapper>

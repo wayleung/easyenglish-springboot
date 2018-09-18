@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easyenglish.dao.QuestionMapper" >
+  <resultMap id="BaseResultMap" type="com.easyenglish.dto.Question" >
+    <id column="q_id" property="qId" jdbcType="INTEGER" />
+    <result column="test_id" property="testId" jdbcType="INTEGER" />
+    <result column="question_number" property="questionNumber" jdbcType="INTEGER" />
+    <result column="question_type" property="questionType" jdbcType="INTEGER" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="textbook" property="textbook" jdbcType="INTEGER" />
+    <result column="fill_in_answer" property="fillInAnswer" jdbcType="VARCHAR" />
+    <result column="option_answer" property="optionAnswer" jdbcType="VARCHAR" />
+    <result column="true_false_answer" property="trueFalseAnswer" jdbcType="INTEGER" />
+    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_admin" property="createAdmin" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    q_id, test_id, question_number, question_type, subject, type, grade, textbook, fill_in_answer, 
+    option_answer, true_false_answer, img_url, create_time, create_admin, update_time, 
+    status, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easyenglish.dto.QuestionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from question
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from question
+    where q_id = #{qId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from question
+    where q_id = #{qId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.easyenglish.dto.QuestionExample" >
+    delete from question
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.easyenglish.dto.Question" >
+    insert into question (q_id, test_id, question_number, 
+      question_type, subject, type, 
+      grade, textbook, fill_in_answer, 
+      option_answer, true_false_answer, img_url, 
+      create_time, create_admin, update_time, 
+      status, remark)
+    values (#{qId,jdbcType=INTEGER}, #{testId,jdbcType=INTEGER}, #{questionNumber,jdbcType=INTEGER}, 
+      #{questionType,jdbcType=INTEGER}, #{subject,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{grade,jdbcType=INTEGER}, #{textbook,jdbcType=INTEGER}, #{fillInAnswer,jdbcType=VARCHAR}, 
+      #{optionAnswer,jdbcType=VARCHAR}, #{trueFalseAnswer,jdbcType=INTEGER}, #{imgUrl,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createAdmin,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.easyenglish.dto.Question" >
+    insert into question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qId != null" >
+        q_id,
+      </if>
+      <if test="testId != null" >
+        test_id,
+      </if>
+      <if test="questionNumber != null" >
+        question_number,
+      </if>
+      <if test="questionType != null" >
+        question_type,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="textbook != null" >
+        textbook,
+      </if>
+      <if test="fillInAnswer != null" >
+        fill_in_answer,
+      </if>
+      <if test="optionAnswer != null" >
+        option_answer,
+      </if>
+      <if test="trueFalseAnswer != null" >
+        true_false_answer,
+      </if>
+      <if test="imgUrl != null" >
+        img_url,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createAdmin != null" >
+        create_admin,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qId != null" >
+        #{qId,jdbcType=INTEGER},
+      </if>
+      <if test="testId != null" >
+        #{testId,jdbcType=INTEGER},
+      </if>
+      <if test="questionNumber != null" >
+        #{questionNumber,jdbcType=INTEGER},
+      </if>
+      <if test="questionType != null" >
+        #{questionType,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="textbook != null" >
+        #{textbook,jdbcType=INTEGER},
+      </if>
+      <if test="fillInAnswer != null" >
+        #{fillInAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="optionAnswer != null" >
+        #{optionAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="trueFalseAnswer != null" >
+        #{trueFalseAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createAdmin != null" >
+        #{createAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.easyenglish.dto.QuestionExample" resultType="java.lang.Integer" >
+    select count(*) from question
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update question
+    <set >
+      <if test="record.qId != null" >
+        q_id = #{record.qId,jdbcType=INTEGER},
+      </if>
+      <if test="record.testId != null" >
+        test_id = #{record.testId,jdbcType=INTEGER},
+      </if>
+      <if test="record.questionNumber != null" >
+        question_number = #{record.questionNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.questionType != null" >
+        question_type = #{record.questionType,jdbcType=INTEGER},
+      </if>
+      <if test="record.subject != null" >
+        subject = #{record.subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.grade != null" >
+        grade = #{record.grade,jdbcType=INTEGER},
+      </if>
+      <if test="record.textbook != null" >
+        textbook = #{record.textbook,jdbcType=INTEGER},
+      </if>
+      <if test="record.fillInAnswer != null" >
+        fill_in_answer = #{record.fillInAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.optionAnswer != null" >
+        option_answer = #{record.optionAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trueFalseAnswer != null" >
+        true_false_answer = #{record.trueFalseAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="record.imgUrl != null" >
+        img_url = #{record.imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createAdmin != null" >
+        create_admin = #{record.createAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update question
+    set q_id = #{record.qId,jdbcType=INTEGER},
+      test_id = #{record.testId,jdbcType=INTEGER},
+      question_number = #{record.questionNumber,jdbcType=INTEGER},
+      question_type = #{record.questionType,jdbcType=INTEGER},
+      subject = #{record.subject,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      grade = #{record.grade,jdbcType=INTEGER},
+      textbook = #{record.textbook,jdbcType=INTEGER},
+      fill_in_answer = #{record.fillInAnswer,jdbcType=VARCHAR},
+      option_answer = #{record.optionAnswer,jdbcType=VARCHAR},
+      true_false_answer = #{record.trueFalseAnswer,jdbcType=INTEGER},
+      img_url = #{record.imgUrl,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_admin = #{record.createAdmin,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.easyenglish.dto.Question" >
+    update question
+    <set >
+      <if test="testId != null" >
+        test_id = #{testId,jdbcType=INTEGER},
+      </if>
+      <if test="questionNumber != null" >
+        question_number = #{questionNumber,jdbcType=INTEGER},
+      </if>
+      <if test="questionType != null" >
+        question_type = #{questionType,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="textbook != null" >
+        textbook = #{textbook,jdbcType=INTEGER},
+      </if>
+      <if test="fillInAnswer != null" >
+        fill_in_answer = #{fillInAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="optionAnswer != null" >
+        option_answer = #{optionAnswer,jdbcType=VARCHAR},
+      </if>
+      <if test="trueFalseAnswer != null" >
+        true_false_answer = #{trueFalseAnswer,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null" >
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createAdmin != null" >
+        create_admin = #{createAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where q_id = #{qId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.easyenglish.dto.Question" >
+    update question
+    set test_id = #{testId,jdbcType=INTEGER},
+      question_number = #{questionNumber,jdbcType=INTEGER},
+      question_type = #{questionType,jdbcType=INTEGER},
+      subject = #{subject,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=INTEGER},
+      textbook = #{textbook,jdbcType=INTEGER},
+      fill_in_answer = #{fillInAnswer,jdbcType=VARCHAR},
+      option_answer = #{optionAnswer,jdbcType=VARCHAR},
+      true_false_answer = #{trueFalseAnswer,jdbcType=INTEGER},
+      img_url = #{imgUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_admin = #{createAdmin,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where q_id = #{qId,jdbcType=INTEGER}
+  </update>
+</mapper>
