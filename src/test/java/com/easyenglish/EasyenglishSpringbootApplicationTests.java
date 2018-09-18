@@ -1,4 +1,4 @@
-package com.way.easyenglish;
+package com.easyenglish;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
