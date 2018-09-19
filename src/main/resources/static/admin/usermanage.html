@@ -1,0 +1,1022 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!--IE兼容vue-->
+    <script src="assets/scripts/polyfill.min.js"></script>
+    <title>用户管理-益思英语管理端</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+    <link rel="stylesheet" href="assets/css/demo.css">
+    <!-- GOOGLE FONTS -->
+    <link href="assets/css/googleapis.css" rel="stylesheet">
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+
+</head>
+
+<body>
+<!-- WRAPPER -->
+<div id="wrapper">
+
+    <div id="navbar"></div>
+
+    <div id="sidebar"></div>
+
+    <!-- MAIN -->
+    <div class="main">
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="container-fluid">
+                <h3 class="page-title">用户管理</h3>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <!-- TABLE HOVER -->
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">用户信息</h3>
+                            </div>
+                            <div class="panel-body">
+                                <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
+                                        data-target="#addModal">增加
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">增加用户信息</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">用户名</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" v-model="addinfo.username" id="username"
+                                                                   class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">密码</label>
+                                                        <div class="col-md-10">
+                                                            <input type="password" v-model="addinfo.password"
+                                                                   class="form-control" required>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">姓名</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" v-model="addinfo.name"
+                                                                   class="form-control" required>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">性别</label>
+                                                        <div class="col-md-10">
+                                                            <select class="form-control" v-model="addinfo.gender">
+                                                                <option value="1" selected="selected">男</option>
+                                                                <option value="0">女</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">电话</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                   v-model="addinfo.phone" id="phone">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">邮箱</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                   v-model="addinfo.email" id="email">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">地址</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                   v-model="addinfo.address">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">联系人姓名</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                   v-model="addinfo.parentName">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">联系人电话</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                   v-model="addinfo.parentPhone" id="parentPhone">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!--<div class="form-group">
+                                                        <label class="col-md-2 control-label">学校</label>
+                                                        <div class="col-md-10">
+                                                            <select class="form-control">
+                                                                <option value="0">本校</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>-->
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">年级</label>
+                                                        <div class="col-md-10">
+                                                            <select class="form-control" v-model="addinfo.grade">
+                                                                <option value="1">一</option>
+                                                                <option value="2">二</option>
+                                                                <option value="3">三</option>
+                                                                <option value="4">四</option>
+                                                                <option value="5">五</option>
+                                                                <option value="6">六</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">班别</label>
+                                                        <div class="col-md-10">
+                                                            <select class="form-control" v-model="addinfo.classId">
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <option value="6">6</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="col-md-2 control-label">角色</label>
+                                                                                                                <div class="col-md-10">
+                                                                                                                    <select class="form-control">
+                                                                                                                        <option value="1">1</option>
+                                                                                                                        <option value="2">2</option>
+                                                                                                                        <option value="3">3</option>
+                                                                                                                        <option value="4">4</option>
+                                                                                                                        <option value="5">5</option>
+                                                                                                                        <option value="6">6</option>
+                                                                                                                    </select>
+                                                                                                                </div>
+                                                                                                            </div>
+
+
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="col-md-2 control-label">状态</label>
+                                                                                                                <div class="col-md-10">
+                                                                                                                    <select class="form-control">
+                                                                                                                        <option value="1">1</option>
+                                                                                                                        <option value="2">2</option>
+                                                                                                                        <option value="3">3</option>
+                                                                                                                        <option value="4">4</option>
+                                                                                                                        <option value="5">5</option>
+                                                                                                                        <option value="6">6</option>
+                                                                                                                    </select>
+                                                                                                                </div>
+                                                                                                            </div>-->
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">备注</label>
+                                                        <div class="col-md-10">
+                                                            <textarea class="form-control" rows="4"
+                                                                      v-model="addinfo.remark"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p id="msgadd" style="color: red;text-align: center;"></p>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                                </button>
+                                                <button type="button" class="btn btn-primary" id="addButton">保存</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table id="userManage" class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>用户id</th>
+                                        <th>用户名</th>
+                                        <th>姓名</th>
+                                        <th>性别</th>
+                                        <!--<th>出生日期</th>-->
+                                        <th>电话</th>
+                                        <th>邮箱</th>
+                                        <!--<th>城市</th>-->
+                                        <th>地址</th>
+                                        <th>联系人姓名</th>
+                                        <th>联系人电话</th>
+                                        <!--<th>学校</th>-->
+                                        <th>年级</th>
+                                        <th>班别</th>
+                                        <!--<th>积分</th>-->
+                                        <!--<th>微信id</th>-->
+                                        <th>注册时间</th>
+                                        <th>最后登陆时间</th>
+                                        <th>更新时间</th>
+                                        <!--<th>是否会员</th>-->
+                                        <!--<th>角色</th>-->
+                                        <!--<th>状态</th>-->
+                                        <th>备注</th>
+                                        <th>操作</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <template v-for="item in datas">
+
+                                        <tr>
+                                            <!--<input type="hidden"  :value="item.id" />-->
+                                            <td>{{item.userId}}</td>
+                                            <td>{{item.username}}</td>
+                                            <!--<td>{{item.password}}</td>-->
+                                            <td>{{item.name}}</td>
+                                            <td>{{item.gender|genders}}</td>
+                                            <td>{{item.phone}}</td>
+                                            <td>{{item.email}}</td>
+                                            <td>{{item.address}}</td>
+                                            <td>{{item.parentName}}</td>
+                                            <td>{{item.parentPhone}}</td>
+                                            <!--<td>{{item.school}}</td>-->
+                                            <td>{{item.grade}}</td>
+                                            <td>{{item.classId}}</td>
+                                            <td>{{item.registerTime|times}}</td>
+                                            <td>{{item.lastLoginTime|times}}</td>
+                                            <td>{{item.updateTime|times}}</td>
+                                            <td>{{item.remark}}</td>
+                                            <td>
+                                                <button type="button" v-on:click="Update(item)"
+                                                        class="btn btn-warning btn-xs" data-toggle="modal"
+                                                        data-target="#updateModal">更新
+                                                </button>
+
+
+                                                <button type="button" v-on:click="Delete(item)"
+                                                        class="btn btn-danger btn-xs " data-toggle="modal"
+                                                        data-target="#deleteModal">删除
+                                                </button>
+
+
+                                            </td>
+                                        </tr>
+
+                                    </template>
+
+
+                                    </tbody>
+                                </table>
+
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination">
+                                        <!--<li><a href="#" aria-label="First">首页</a></li>-->
+                                        <li id="prevPage" onclick="prevPage()">
+                                            <a style="cursor: pointer" aria-label="Previous">
+                                                <span aria-hidden="true">上一页</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <span aria-hidden="true" id="pageNow">1</span>
+                                        </li>
+                                        <li>
+                                            <span aria-hidden="true">/</span>
+                                        </li>
+                                        <li>
+                                            <span aria-hidden="true" id="totalPage">10</span>
+                                        </li>
+                                        <li id="nextPage" onclick="nextPage()">
+                                            <a style="cursor: pointer" aria-label="Next">
+                                                <span aria-hidden="true">下一页</span>
+                                            </a>
+                                        </li>
+
+                                        <li><span>第<input type="text" id="skipPageInput"
+                                                          style="width: 20px;height: 20px"/>页</span> <a
+                                                style="cursor: pointer" onclick="skipPage()">跳转</a>
+                                        </li>
+                                        <!--<li><a href="#" aria-label="Last">尾页</a></li>-->
+                                    </ul>
+                                </nav>
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="updateModal" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">更新用户信息</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-horizontal">
+                                                    <input type="hidden" v-model="updateinfo.userId" name="">
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">用户名</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                   v-model="updateinfo.username" id="username_update"
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">密码</label>
+                                                        <div class="col-md-10">
+                                                            <input type="password" class="form-control"
+                                                                   v-model="updateinfo.password" required>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">姓名</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                   v-model="updateinfo.name" required>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">性别</label>
+                                                        <div class="col-md-10">
+                                                            <select class="form-control" v-model="updateinfo.gender">
+                                                                <option value="1" selected="selected">男</option>
+                                                                <option value="0">女</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">电话</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                   v-model="updateinfo.phone" id="phone_update">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">邮箱</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                   v-model="updateinfo.email" id="email_update">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">地址</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                   v-model="updateinfo.address">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">联系人姓名</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                   v-model="updateinfo.parentName">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">联系人电话</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                   v-model="updateinfo.parentPhone"
+                                                                   id="parentPhone_update">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!--<div class="form-group">
+                                                        <label class="col-md-2 control-label">学校</label>
+                                                        <div class="col-md-10">
+                                                            <select class="form-control">
+                                                                <option value="0">本校</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>-->
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">年级</label>
+                                                        <div class="col-md-10">
+                                                            <select class="form-control" v-model="updateinfo.grade">
+                                                                <option value="1">一</option>
+                                                                <option value="2">二</option>
+                                                                <option value="3">三</option>
+                                                                <option value="4">四</option>
+                                                                <option value="5">五</option>
+                                                                <option value="6">六</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">班别</label>
+                                                        <div class="col-md-10">
+                                                            <select class="form-control" v-model="updateinfo.classId">
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <option value="6">6</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="col-md-2 control-label">角色</label>
+                                                                                                                <div class="col-md-10">
+                                                                                                                    <select class="form-control">
+                                                                                                                        <option value="1">1</option>
+                                                                                                                        <option value="2">2</option>
+                                                                                                                        <option value="3">3</option>
+                                                                                                                        <option value="4">4</option>
+                                                                                                                        <option value="5">5</option>
+                                                                                                                        <option value="6">6</option>
+                                                                                                                    </select>
+                                                                                                                </div>
+                                                                                                            </div>
+
+
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="col-md-2 control-label">状态</label>
+                                                                                                                <div class="col-md-10">
+                                                                                                                    <select class="form-control">
+                                                                                                                        <option value="1">1</option>
+                                                                                                                        <option value="2">2</option>
+                                                                                                                        <option value="3">3</option>
+                                                                                                                        <option value="4">4</option>
+                                                                                                                        <option value="5">5</option>
+                                                                                                                        <option value="6">6</option>
+                                                                                                                    </select>
+                                                                                                                </div>
+                                                                                                            </div>-->
+
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">备注</label>
+                                                        <div class="col-md-10">
+                                                            <textarea class="form-control" rows="4"
+                                                                      v-model="updateinfo.remark"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p id="msgupdate" style="color: red;text-align: center;"></p>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                                </button>
+                                                <button type="button" class="btn btn-primary" id="updateButton">保存
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog  modal-sm" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">警告</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="hidden" v-model="deleteinfo.userId" id="userId" name="">
+                                                是否确认删除?
+                                            </div>
+                                            <p id="msgdelete" style="color: red;text-align: center;"></p>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                                </button>
+                                                <button type="button" class="btn btn-primary" id="deleteButton">确定
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!-- END TABLE HOVER -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- END MAIN CONTENT -->
+    </div>
+    <!-- END MAIN -->
+    <div class="clearfix"></div>
+    <div id="footer"></div>
+</div>
+<!-- END WRAPPER -->
+<!-- Javascript -->
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="assets/scripts/klorofil-common.js"></script>
+<script src="assets/vendor/vue/vue.min.js"></script>
+
+<script>
+
+
+    function deleteAll(id) {
+        $('#' + id).empty();
+    }
+
+    function addMsg(id, msg) {
+        $('#' + id).text(msg);
+    }
+
+
+    /*
+        $('#data_4 .input-group.date').datepicker({
+            todayBtn : "linked",
+            keyboardNavigation : false,
+            forceParse : false,
+            calendarWeeks : true,
+            autoclose : true
+        }); */
+
+    function getHostPath() {
+        var curWwwPath = window.document.location.href;
+        var pathName = window.document.location.pathname;
+        var pos = curWwwPath.indexOf(pathName);
+        //获取主机地址，如： http://localhost:8083
+        var localhostPath = curWwwPath.substring(0, pos);
+        return localhostPath;
+    }
+
+    var rootPath = getHostPath() + "/admin/";
+
+
+    var user_vm = new Vue({
+        el: '#userManage',
+        data: {datas: {}},
+        methods: {
+
+            Delete: function (item) //删除
+            {
+                console.log(item);
+                delete_vm.$data.deleteinfo = item;
+            },
+            Update: function (item) //更新
+            {
+                console.log(item);
+                //克隆一个对象   这样更新表单中改变数据 不会影响前端表单
+                var databack = $.extend({}, item);
+                update_vm.$data.updateinfo = databack;
+                console.log(update_vm.$data.updateinfo);
+            }
+        },
+        filters: {
+            times: function (value) {
+                if (value != undefined && value != '' && value != null) {
+                    let date = new Date(value) // nuw 一个时间
+                    let getHours // 小时
+                    let getMinutes // 分
+                    if (date.getHours() < 10) {
+                        getHours = "0" + date.getHours()
+                    } else {
+                        getHours = date.getHours()
+                    }
+// 判断小时是否小于10的补全：加0
+                    if (date.getMinutes() < 10) {
+                        getMinutes = "0" + date.getMinutes()
+                    } else {
+                        getMinutes = date.getMinutes()
+                    }
+// 判断分是否小于10的补全：加0
+                    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + "  " + getHours + ":" + getMinutes // 返回转换后的值
+
+                } else {
+                    return '';
+                }
+
+
+            },
+            genders:function (value) {
+                if (value != undefined && value != '' && value != null) {
+                    if(value==0){
+                        return '女';
+                    }else{
+                        return '男';
+                    }
+                }
+            }
+
+        }
+
+
+    })
+
+
+    function selectUser() {
+
+
+        var url = rootPath + "selectAllUserByPage";
+
+
+        console.log(url);
+        $.ajax({
+            url: url,
+            type: "get",
+            async: true,
+            dataType: "json",
+            //data: datas,
+            //异步   注意数据的获取
+            success: function (data) {
+                if (data.success == true) {
+                    /* user_vm.datas=data.datas; */
+                    user_vm.datas = data.datas.data;
+                    //分页
+                    $('#pageNow').text(data.datas.pageNow);
+                    $('#totalPage').text(data.datas.totalPage);
+                }
+            }
+        });
+    }
+
+
+    //function ajax(api,datas) {
+    $(document).ready(
+        selectUser()
+    );
+
+
+    //分页
+
+
+    function nextPage() {
+        var pageNow = $('#pageNow').text();
+        var totalPage = $('#totalPage').text();
+
+        var nextPage = parseInt(pageNow) + 1;
+
+        if (nextPage <= totalPage && nextPage > 0) {
+
+
+            var url = 'selectAllUserByPage';
+
+            // var grade_id = $('#grade_menu').val();
+
+
+            var dataJson = {"pageNow": nextPage};
+
+            // if (grade_id > 0) {
+            //     url = 'selectAllTextVideoByGradeByPage';
+            //     dataJson = {"pageNow": nextPage, "gradeId": grade_id};
+            // }
+
+
+            //console.log('nextPage'+nextPage);
+
+            $.ajax({
+                url: url,
+                type: "get",
+                async: true,
+                dataType: "json",
+                data: dataJson,
+                //异步   注意数据的获取
+                success: function (data) {
+                    console.log(data);
+                    // //总页数
+                    // var totalPage = data.datas.totalPage;
+                    // //现在页码
+                    // var pageNow = data.datas.pageNow;
+                    // if(nextPage>0&&nextPage<totalPage){
+                    if (data.success == true) {
+                        user_vm.datas = data.datas.data;
+                        //分页
+                        $('#pageNow').text(data.datas.pageNow);
+                        $('#totalPage').text(data.datas.totalPage);
+                    }
+                    // }
+                }
+            });
+        }
+
+    }
+
+    function prevPage() {
+        var pageNow = $('#pageNow').text();
+        var totalPage = $('#totalPage').text();
+
+        var prevPage = parseInt(pageNow) - 1;
+
+        if (prevPage <= totalPage && prevPage > 0) {
+
+
+            var url = 'selectAllUserByPage';
+
+            // var grade_id = $('#grade_menu').val();
+
+            var dataJson = {"pageNow": prevPage};
+
+            // if (grade_id > 0) {
+            //     url = 'selectAllTextVideoByGradeByPage';
+            //     dataJson = {"pageNow": prevPage, "gradeId": grade_id};
+            // }
+
+
+            //console.log('prevPage'+prevPage);
+
+            $.ajax({
+                url: url,
+                type: "get",
+                async: true,
+                dataType: "json",
+                data: dataJson,
+                //异步   注意数据的获取
+                success: function (data) {
+                    console.log(data);
+                    // //总页数
+                    // var totalPage = data.datas.totalPage;
+                    // //现在页码
+                    // var pageNow = data.datas.pageNow;
+                    // if(prevPage>0&&prevPage<totalPage){
+                    if (data.success == true) {
+                        user_vm.datas = data.datas.data;
+                        //分页
+                        $('#pageNow').text(data.datas.pageNow);
+                        $('#totalPage').text(data.datas.totalPage);
+                    }
+                    // }
+                }
+            });
+        }
+    }
+
+
+    function skipPage() {
+        var pageNow = $('#pageNow').text();
+        var totalPage = $('#totalPage').text();
+
+        var skipPage = $('#skipPageInput').val();
+
+        if (typeof skipPage !== "undefined" && skipPage != null && skipPage != '' && !isNaN(skipPage) && skipPage <= totalPage && skipPage > 0) {
+            console.log(skipPage);
+
+            var url = 'selectAllUserByPage';
+
+            // var grade_id = $('#grade_menu').val();
+
+            var dataJson = {"pageNow": skipPage};
+
+            // if (grade_id > 0) {
+            //     url = 'selectAllTextVideoByGradeByPage';
+            //     dataJson = {"pageNow": skipPage, "gradeId": grade_id};
+            // }
+
+
+            //console.log('prevPage'+prevPage);
+
+            $.ajax({
+                url: url,
+                type: "get",
+                async: true,
+                dataType: "json",
+                data: dataJson,
+                //异步   注意数据的获取
+                success: function (data) {
+                    console.log(data);
+                    // //总页数
+                    // var totalPage = data.datas.totalPage;
+                    // //现在页码
+                    // var pageNow = data.datas.pageNow;
+                    // if(prevPage>0&&prevPage<totalPage){
+                    if (data.success == true) {
+                        user_vm.datas = data.datas.data;
+                        //分页
+                        $('#pageNow').text(data.datas.pageNow);
+                        $('#totalPage').text(data.datas.totalPage);
+                    }
+                    // }
+                }
+            });
+        }
+    }
+
+
+    //给更新div添加数据
+    var update_vm = new Vue({
+        el: "#updateModal",
+        data: {
+            updateinfo: {}
+        }
+    });
+
+
+    $("#updateButton").click(
+        function () {
+
+            var username = $("#username_update").val();
+            var phone = $("#phone_update").val();
+            var parentPhone = $("#parentPhone_update").val();
+            var email = $("#email_update").val();
+            var phoneReg = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
+            var emailReg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+
+            if (username == null || username == '') {
+                deleteAll('msgupdate');
+                addMsg('msgupdate', '账号不能为空');
+            } else if (email != null && email != '' && emailReg.test(email) == false) {
+
+                deleteAll('msgupdate');
+                addMsg('msgupdate', '邮箱格式不正确');
+
+
+            } else if (phone != null && phone != '' && phoneReg.test(phone) == false) {
+                console.log(phoneReg.test(phone));
+                deleteAll('msgupdate');
+                addMsg('msgupdate', '电话格式不正确');
+
+
+            } else if (parentPhone != null && parentPhone != '' && phoneReg.test(parentPhone) == false) {
+
+                deleteAll('msgupdate');
+                addMsg('msgupdate', '联系人电话格式不正确');
+
+
+            } else {
+                console.log('update submit');
+                $.post(rootPath + 'updateUserByPrimaryKey', update_vm.$data.updateinfo, function (result) {
+                    if (result.success == true) {
+                        console.log(result);
+                        window.location.reload();
+                    } else {
+                        deleteAll('msgupdate');
+                        addMsg('msgupdate', result.msg);
+                    }
+
+                    //可以把vue.js数据替换从而更新更新到页面
+                    /* 	        vm.$data.datas.splice(index, index, update_vm.$data.updateinfo);   */
+
+                });
+
+            }
+
+        }
+    );
+
+
+    var add_vm = new Vue({
+        el: "#addModal",
+        data: {
+            addinfo: {}
+        }
+    });
+
+
+    $("#addButton").click(
+        function () {
+
+            var username = $("#username").val();
+            var phone = $("#phone").val();
+            var email = $("#email").val();
+            var parentPhone = $("#parentPhone").val();
+            var emailReg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
+
+            var phoneReg = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
+            if (username == null || username == '') {
+                deleteAll('msgadd');
+                addMsg('msgadd', '账号不能为空');
+            } else if (phone != null && phone != '' && phoneReg.test(phone) == false) {
+                deleteAll('msgadd');
+                addMsg('msgadd', '电话格式不正确');
+            } else if (parentPhone != null && parentPhone != '' && phoneReg.test(parentPhone) == false) {
+                deleteAll('msgadd');
+                addMsg('msgadd', '联系人电话格式不正确');
+            }
+            else if (email != null && email != '' && emailReg.test(email) == false) {
+                deleteAll('msgadd');
+                addMsg('msgadd', '邮箱格式不正确');
+            }
+            else {
+                $.ajax({
+                    url: rootPath + "selectUserByUsername",
+                    type: "get",
+                    async: true,
+                    dataType: "json",
+                    data: {'username': username},
+                    success: function (datas) {
+
+                        console.log(datas.success);
+                        if (datas.success == true) {
+                            deleteAll('msgadd');
+                            addMsg('msgadd', '该账号用户已经存在，不能添加');
+
+                        } else {
+                            console.log('add submit');
+                            $.post(rootPath + 'insertUser', add_vm.$data.addinfo, function (result) {
+                                if (result.success == true) {
+                                    console.log(result);
+                                    window.location.reload();
+                                } else {
+                                    deleteAll('msgadd');
+                                    addMsg('msgadd', result.msg);
+                                }
+
+                                //可以把vue.js数据替换从而更新更新到页面
+                                /* 	        vm.$data.datas.splice(index, index, update_vm.$data.updateinfo);   */
+                            });
+                        }
+                    }
+
+                });
+            }
+
+        }
+    );
+
+
+    //给更新div添加数据
+    var delete_vm = new Vue({
+        el: "#deleteModal",
+        data: {
+            deleteinfo: {}
+        }
+    });
+
+
+    $("#deleteButton").click(
+        function () {
+            console.log('del submit', delete_vm.$data.deleteinfo);
+            $.post(rootPath + 'deleteUserByPrimaryKey', delete_vm.$data.deleteinfo, function (result) {
+                if (result.success == true) {
+                    console.log(result);
+                    window.location.reload();
+                } else {
+                    deleteAll('msgdelete');
+                    addMsg('msgdelete', result.msg);
+                }
+                //可以把vue.js数据替换从而更新更新到页面
+                /* 	        vm.$data.datas.splice(index, index, update_vm.$data.updateinfo);   */
+
+            });
+        }
+    );
+
+
+</script>
+
+
+<script>
+
+    /*导入头部和尾部*/
+    $(document).ready(function () {
+        $("#navbar").load("navbar.html");
+        $("#sidebar").load("sidebar.html");
+        $("#footer").load("footer.html");
+    });
+</script>
+</body>
+
+</html>

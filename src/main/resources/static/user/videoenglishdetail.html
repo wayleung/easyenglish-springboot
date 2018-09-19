@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>益思英语 - 视听英语</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="WayLeung">
+
+	<!-- Include All Css -->
+
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/template.css">
+	<link rel="stylesheet" href="css/preset1.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="icon" type="image/png" href="images/home1/logo4.png">
+	<!--IE兼容vue-->
+	<script src="js/polyfill.min.js"></script>
+	<!--[if lt IE 9]>
+	<script src="js/html5shive.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+<!-- Header Area -->
+<div id="header"></div>
+<!-- /.header-area -->
+
+<!-- Breadcrumb  -->
+<section class="breadcrumb-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 text-center">
+				<div class="breadcrumb-content">
+					<h2>视听英语</h2>
+					<!--<h2>暑假乐</h2>-->
+					<ul>
+						<li><a href="index.html">小学英语</a><span>/</span></li>
+						<li>视听英语</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /.breadcrumb-section  -->
+
+<!-- Event Section -->
+<section class="event-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+
+			</div>
+
+			<!--<div  id="videoEnglishDetailView" class="col-sm-6 col-xs-12" style="margin-left: auto;">-->
+				<!--<div class="single-event">-->
+					<!--<audio id="myAudio" :src="datas.videoUrl" preload="auto" controls="controls" controlsList="nodownload">-->
+						<!--您的浏览器不支持 audio 标签。-->
+					<!--</audio>-->
+
+					<!--<div id="imgArea">-->
+						<!--&lt;!&ndash;<div class="event-img">&ndash;&gt;-->
+						<!--&lt;!&ndash;<img :src="datas.imgUrl" alt="">&ndash;&gt;-->
+						<!--&lt;!&ndash; <div class="class-hover">-->
+                            <!--<a class="popup" href="images/event/thumb1.jpg"><i class="icon-link"></i></a>-->
+                        <!--</div> &ndash;&gt;-->
+						<!--&lt;!&ndash;<a href="#">Page {{datas.page}}<span style="margin-top: 10px;">Unit {{datas.unit}} Part {{datas.part}}</span></a>&ndash;&gt;-->
+						<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+					<!--</div>-->
+
+
+
+					<!--<h3><a href="#">{{datas.title}}</a></h3>-->
+					<!--&lt;!&ndash;<h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing.</a></h3>&ndash;&gt;-->
+					<!--<a href="#">{{datas.createTime | times}}</a>-->
+					<!--<a href="#">{{datas.author}}</a>-->
+					<!--<p style="line-height: 25px;font-family: Consolas;font-size: 20px;">-->
+						<!--{{datas.text}}-->
+					<!--</p>-->
+				<!--</div>-->
+
+
+
+
+
+
+			<!--</div>-->
+			<div  id="videoEnglishDetailView" class="col-sm-8 col-xs-12">
+				<div class="single-event" >
+					<h3><a href="#">{{datas.title}}</a></h3>
+					<!--<h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing.</a></h3>-->
+					<a href="#">{{datas.createTime | times}}</a>
+					<a href="#">{{datas.author}}</a>
+					<p style="line-height: 25px;font-family: Consolas;font-size: 20px;">
+						{{datas.text}}
+					</p>
+
+
+					<video id="myVideo" width="100%" height="100%" :src="datas.videoUrl" preload="auto" controls="controls" controlsList="nodownload">
+						您的浏览器不支持 audio 标签。
+					</video>
+
+
+
+
+
+
+				</div>
+
+
+
+
+			</div>
+
+
+			<div class="col-sm-3">
+
+			</div>
+
+
+
+		</div>
+
+		<!-- 		<div class="row">
+                            <div class="col-sm-3">
+
+                    </div>
+                    点赞区域
+                </div> -->
+
+		<!--<div class="comment-section">
+					<h3>10 评论</h3>
+					<ol>
+						<li>
+							<div class="author-img pull-left">
+								<img alt="" src="images/blog/author1.jpg">
+							</div>
+							<div class="author-details pull-left">
+								<h5><a href="#">小明</a></h5>
+								<span>2018/07/22 14:37:00</span>
+								<p>
+									希望越做越好
+								</p>
+								&lt;!&ndash; <a href="#">回复</a> &ndash;&gt;
+							</div>
+							<div class="clearfix"></div>
+							&lt;!&ndash; <ol>
+								<li>
+									<div class="author-img pull-left">
+										<img alt="" src="images/blog/author2.jpg">
+									</div>
+									<div class="author-details pull-left">
+										<h5><a href="#">Jerry Hughes</a></h5>
+										<span>July 21, 2016 at 3:35 pm</span>
+										<p>
+											Vacation today means absence from the
+											workplace rather than temporary cession of
+											work. It is now the norm in North America
+											and Great Britain to carry on working or
+											remain on call while on vacation rather than
+											abandon work altogether.
+										</p>
+									</div>
+									<div class="clearfix"></div>
+								</li>
+							</ol> &ndash;&gt;
+						</li>
+					</ol>
+					<h3>留下您的感受与建议</h3>
+					<form action="#" method="post" class="comment-form">
+						&lt;!&ndash; <input type="text" name="name" placeholder="Name">
+						<input type="email" name="email" placeholder="Email ID">
+						<input type="tel" name="phone" placeholder="Phone Number"> &ndash;&gt;
+						<textarea placeholder="Your Comments"></textarea>
+						<button type="submit" class="primary-btn"><span>评论</span></button>
+					</form>
+				</div>-->
+
+		<!-- <div class="row">
+			<div class="col-sm-12 col-xs-12">
+				<ul class="paginations post-pagi">
+					<li><a href="#"><i aria-hidden="true" class="fa fa-angle-left"></i></a></li>
+					<li><a href="#">1</a></li>
+					<li class="active"><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">6</a></li>
+					<li><a href="#">7</a></li>
+					<li><a href="#">8</a></li>
+					<li><a href="#">9</a></li>
+					<li><a href="#">10</a></li>
+					<li><a href="#"><i aria-hidden="true" class="fa fa-angle-right"></i></a></li>
+				</ul>
+			</div>
+		</div> -->
+	</div>
+</section>
+<!-- /.event-section -->
+
+<!-- Footer Section -->
+<div id="footer"></div>
+<!-- /.footer-section -->
+
+<!-- Include All JavaScript -->
+<!-- 	footer中已经有js -->
+<script src="js/jquery.min.js"></script>
+<script src="js/vue.min.js"></script>
+
+
+<script>
+
+    $(document).ready(function(){
+        $('#myVideo').bind('contextmenu',function() { return false; });
+    });
+
+
+
+    function deleteAll(id){
+        $('#'+id).empty();
+    }
+
+    function addMsg(id,msg){
+        $('#'+id).text(msg);
+    }
+
+
+    /*
+        $('#data_4 .input-group.date').datepicker({
+            todayBtn : "linked",
+            keyboardNavigation : false,
+            forceParse : false,
+            calendarWeeks : true,
+            autoclose : true
+        }); */
+
+    function getHostPath() {
+        var curWwwPath = window.document.location.href;
+        var pathName = window.document.location.pathname;
+        var pos = curWwwPath.indexOf(pathName);
+        //获取主机地址，如： http://localhost:8083
+        var localhostPath = curWwwPath.substring(0, pos);
+        return localhostPath;
+    }
+
+    var rootPath = getHostPath() + "/user/";
+
+
+    var videoEnglish_vm =  new Vue({
+        el: '#videoEnglishDetailView',
+        data: {datas:{}},
+        filters: {
+            times: function (value) {
+                if(value!=undefined&&value!=''&&value!=null){
+                    let date = new Date(value) // nuw 一个时间
+                    let getHours // 小时
+                    let getMinutes // 分
+                    if (date.getHours() < 10) {
+                        getHours = "0" + date.getHours()
+                    } else {
+                        getHours = date.getHours()
+                    }
+// 判断小时是否小于10的补全：加0
+                    if (date.getMinutes() < 10) {
+                        getMinutes = "0" + date.getMinutes()
+                    } else {
+                        getMinutes = date.getMinutes()
+                    }
+// 判断分是否小于10的补全：加0
+                    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + "  " + getHours + ":" + getMinutes // 返回转换后的值
+
+                }else{
+                    return '';
+                }
+
+
+            }
+        }
+
+    })
+
+
+    //返回地址栏参数
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+
+
+    //function ajax(api,datas) {
+    $(document).ready(function() {
+        var tvId = GetQueryString('tvId');
+
+
+
+
+        console.log(tvId);
+        if(tvId!=null&&tvId!=''){
+            var url = rootPath + "selectVideoEnglishByPrimaryKey?tvId="+tvId;
+        }else{
+            var url = rootPath + "selectVideoEnglishByPrimaryKey";
+        }
+
+
+
+
+
+        console.log(url);
+        $.ajax({
+            url : url,
+            type : "get",
+            async : false,
+            dataType : "json",
+            //data: datas,
+            //异步   注意数据的获取
+            success : function(data) {
+                if(data.success==true){
+                    var imgstr =  data.datas.imgUrl;
+                    var imgStr = imgstr.trim(';');
+                    console.log(imgStr);
+                    var imgs  = imgStr.split(';')
+                    for (var i  =0  ; i<imgs.length;i++){
+                        console.log(imgs[i]);
+                        $('#imgArea').append("<div class='event-img'><img src="+imgs[i]+"></div>");
+
+                    }
+
+
+
+                    /* videoEnglish_vm.datas=data.datas; */
+                    videoEnglish_vm.datas=data.datas;
+                }
+
+
+            }
+        });
+    });
+    String.prototype.trim = function (char, type) {
+        if (char) {
+            if (type == 'left') {
+                return this.replace(new RegExp('^\\'+char+'+', 'g'), '');
+            } else if (type == 'right') {
+                return this.replace(new RegExp('\\'+char+'+$', 'g'), '');
+            }
+            return this.replace(new RegExp('^\\'+char+'+|\\'+char+'+$', 'g'), '');
+        }
+        return this.replace(/^\s+|\s+$/g, '');
+    };
+
+
+</script>
+<!-- <script src="js/bootstrap.min.js"></script>
+
+<script src="js/mixIt.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/main.js"></script> -->
+<script>
+
+    /*导入头部和尾部*/
+    $(document).ready(function(){
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+    });
+</script>
+</body>
+</html>
+

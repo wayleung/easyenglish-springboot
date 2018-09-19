@@ -1,0 +1,540 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>益思英语 - 视听英语</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="WayLeung">
+
+	<!-- Include All Css -->
+
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/preset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="icon" type="image/png" href="images/home1/logo4.png">
+	<!--IE兼容vue-->
+	<script src="js/polyfill.min.js"></script>
+	<!--[if lt IE 9]>
+	<script src="js/html5shive.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+
+<!-- Header Area -->
+<div id="header"></div>
+<!-- /.header-area -->
+
+<!-- Breadcrumb  -->
+<section class="breadcrumb-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 text-center">
+				<div class="breadcrumb-content">
+					<h2>视听英语</h2>
+					<ul>
+						<li><a href="index.html">小学英语</a><span>/</span></li>
+						<li>视听英语</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /.breadcrumb-section  -->
+
+<!-- Classes Section -->
+<section class="classes-section-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 nav">
+				<div class="class-sort-btn-section">
+					<ul class="sort-btn pull-left" style="display: inline-block">
+						<li class="active filter" data-filter="mix"><a href="#">全部</a></li>
+						<!--<li style="background-color: #cccccc00;;border-color: #cccccc00;;" class="btn btn-default dropdown-toggle"><a href="#">全部</a></li>-->
+						<!--<li class="filter" data-filter="grade" id="grade"><a href="#">年级</a></li>-->
+						<!--<li class="filter" data-filter="type" id="type"><a href="#">按类别</a></li>-->
+						<li style="margin-left: 10px;" class="dropdown">
+							<!--<button-->
+							<!--style="color: #737373; cursor: pointer; font-size: 18px;"-->
+							<!--class="btn btn-default dropdown-toggle" type="button"-->
+							<!--id="gradeDropdown" data-toggle="dropdown" aria-haspopup="true"-->
+							<!--aria-expanded="true">-->
+							<!--按年级 <span class="caret"></span>-->
+							<!--</button>-->
+
+							<!--<ul id="grade_menu" class="dropdown-menu" aria-labelledby="gradeDropdown">-->
+							<!--<br/>-->
+							<!--<li><a href="#" v-on:click="clickGrade()">一年级</a></li>-->
+							<!--<li><a href="#">二年级</a></li>-->
+							<!--<li><a href="#">三年级</a></li>-->
+							<!--<li><a href="#">四年级</a></li>-->
+							<!--<li><a href="#">五年级</a></li>-->
+							<!--<li><a href="#">六年级</a></li>-->
+							<!--</ul>-->
+							<select @change="clickGrade()" id="grade_menu"
+									style="color: #27927a;;cursor: pointer;font-size: 18px;margin-bottom: 20px;">
+								<option value="-1" selected="selected">按年级</option>
+								<option value="4">四年级</option>
+								<option value="5">五年级</option>
+								<option value="6">六年级</option>
+							</select>
+
+						</li>
+
+						<!--<li style="margin-left: 10px;" class="dropdown">-->
+						<!--<button-->
+						<!--style="color: #737373; cursor: pointer; font-size: 18px;"-->
+						<!--class="btn btn-default dropdown-toggle" type="button"-->
+						<!--id="textbookDropdown" data-toggle="dropdown" aria-haspopup="true"-->
+						<!--aria-expanded="true">-->
+						<!--出版社<span class="caret"></span>-->
+						<!--</button>-->
+						<!--<ul class="dropdown-menu" aria-labelledby="textbookDropdown">-->
+						<!--<br/>-->
+						<!--<li><a href="#">仁爱版</a></li>-->
+						<!--<li><a href="#">人民教育版</a></li>-->
+						<!--</ul>-->
+						<!--</li>-->
+
+						<!-- 												  <div class="dropdown">
+                                                    通过data-toggle属性来实现下拉菜单
+                                                    <button class="btn btn-info" data-toggle="dropdown">
+                                                        下拉列表
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li>下拉项1</li>
+                                                         <li>下拉项2</li>
+                                                        <li>下拉项3</li>
+                                                    </ul>
+
+                                                </div> -->
+
+						<!-- 							<li style="margin-left: 10px;" class="dropdown">
+                                                        <button
+                                                            style="color: #737373; cursor: pointer; font-size: 18px;"
+                                                            class="btn btn-default dropdown-toggle" type="button"
+                                                            id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="true">
+                                                            类型<span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                            <li><a href="#"></a></li>
+                                                            <li><a href="#">小学英语</a></li>
+                                                            <li><a href="#">小升初</a></li>
+                                                        </ul>
+                                                    </li> -->
+
+
+					</ul>
+					<!--<form method="post" action="#" class="class-search pull-right">
+                        <input type="search" name="search" placeholder="搜索">
+                        <button type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>-->
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="videoEnglishView">
+			<!--<div class="row" id="videoEnglishView">-->
+			<div id="mixer">
+
+				<template v-for="item in datas">
+
+					<div class="col-sm-4 col-xs-12 mix textbook grade">
+						<!--<div class="col-sm-4 col-xs-12 mix textbook grade" style="height: 390px;width: 426.19px;">-->
+						<div class="single-class">
+							<div class="class-img">
+								<!--<input type="hidden" id="tvIdInput" :value="item.tvId">-->
+								<a href="#" v-on:click="clickDetail(item.tvId)"><img width="360" height="214" alt=""
+																					 :src="item.coverUrl"></a>
+								<!--<img  alt="" src="images/class1/class1.jpg">-->
+								<!--<div class="class-hover">
+                                    <a href="images/class1/class1.jpg" class="popup"><i
+                                        class="icon-link"></i></a>
+                                </div>-->
+							</div>
+							<div class="class-details">
+								<h3>
+									<a href="#" v-on:click="clickDetail(item.tvId)">{{item.title}}</a>
+								</h3>
+								<p>Unit{{item.unit}} Part{{item.part}} Page{{item.page}}</p>
+								<div class="clearfix">
+									<div class="class-meta pull-left">
+										<span>年级</span>
+										<p>{{item.grade}}</p>
+									</div>
+									<!--<div class="class-meta pull-left">
+                                        <span>出版社</span>
+                                        <p>{{item.textbook}}</p>
+                                    </div>-->
+									<!-- <div class="class-meta pull-left">
+                                        <span>Tution Fee</span>
+                                        <p>$129</p>
+                                    </div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</template>
+
+
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 text-center">
+				<ul class="paginations">
+					<li id="prevPage" onclick="prevPage()"><a  style="cursor:pointer"><i class="icon-prev"></i></a></li>
+					<!--<li><a href="#">1</a></li>
+                    <li class="active"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                    <li><a href="#">10</a></li>-->
+					<li><span style="color: #b2b4b8;font-size: 18px;padding: 0 18px;" href="#" id="pageNow">0</span>
+					</li>
+					<li><span style="color: #b2b4b8;font-size: 18px;padding: 0 18px;" href="#">/</span></li>
+					<li><span style="color: #b2b4b8;font-size: 18px;padding: 0 18px;" href="#" id="totalPage">0</span>
+					</li>
+					<li id="nextPage" onclick="nextPage()"><a style="cursor:pointer"><i class="icon-next"></i></a></li>
+					<li><span style="color: #b2b4b8;font-size: 18px;padding: 0 18px;">第</span><input type="text" id="skipPageInput" style="width: 20px;" /><span style="color: #b2b4b8;font-size: 18px;padding: 0 18px;">页</span> <a onclick="skipPage()" style="font-size: 18px;padding: 0 18px;cursor:pointer" id="skipPageBtn">跳转</a>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /.classes-section -->
+
+<!-- Footer Section -->
+<div id="footer"></div>
+<!-- /.footer-section -->
+
+
+<!-- Include All JavaScript -->
+<!-- 	footer中已经有js -->
+<script src="js/jquery.min.js"></script>
+<script src="js/vue.min.js"></script>
+<!--
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/mixIt.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/main.js"></script> -->
+<script>
+
+
+    function deleteAll(id) {
+        $('#' + id).empty();
+    }
+
+    function addMsg(id, msg) {
+        $('#' + id).text(msg);
+    }
+
+
+    /*
+        $('#data_4 .input-group.date').datepicker({
+            todayBtn : "linked",
+            keyboardNavigation : false,
+            forceParse : false,
+            calendarWeeks : true,
+            autoclose : true
+        }); */
+
+    function getHostPath() {
+        var curWwwPath = window.document.location.href;
+        var pathName = window.document.location.pathname;
+        var pos = curWwwPath.indexOf(pathName);
+        //获取主机地址，如： http://localhost:8083
+        var localhostPath = curWwwPath.substring(0, pos);
+        return localhostPath;
+    }
+
+    var rootPath = getHostPath() + "/user/";
+
+
+    var videoEnglish_vm = new Vue({
+        el: '#videoEnglishView',
+        data: {datas: []},
+        methods: {
+            clickDetail: function (tvId) {
+                console.log(tvId);
+                window.location.replace(getHostPath() + "/user/" + "videoenglishdetail.html?tvId=" + tvId);
+
+            }
+
+        }
+    })
+
+
+    var gradeMenu_vm = new Vue({
+        el: '#grade_menu',
+        methods: {
+            clickGrade: function () {
+                var grade = $('#grade_menu').val();
+                if (grade == -1) {
+                    return;
+                }
+                console.log("grade:" + grade);
+                // console.log(videoEnglish_vm.datas=[]);
+                url = rootPath + "selectAllVideoEnglishByGradeByPage";
+                $.ajax({
+                    url: url,
+                    type: "get",
+                    async: false,
+                    dataType: "json",
+                    data: {"gradeId": grade},
+                    //异步   注意数据的获取
+                    success: function (data) {
+                        if (data.success == true) {
+
+                            // console.log(videoEnglish_vm.datas);
+
+
+                            // console.log(data.datas.data);
+
+
+                            videoEnglish_vm.datas = data.datas.data;
+                            // videoEnglish_vm.$forceUpdate();
+                            // gradeMenu_vm.$forceUpdate();
+                            //Vue.set(example1.items, indexOfItem, newValue)
+                            //分页
+                            $('#pageNow').text(data.datas.pageNow);
+                            $('#totalPage').text(data.datas.totalPage);
+
+                            // console.log(videoEnglish_vm.datas);
+
+                        } else {
+                            videoEnglish_vm.datas = [];
+                            //分页
+                            $('#pageNow').text(0);
+                            $('#totalPage').text(0);
+                        }
+                        // console.log(data);
+                        //videoEnglish_vm.datas=data;
+                    }
+                });
+            }
+        }
+
+    });
+
+
+    function selectVideoEnglish() {
+
+
+        var url = rootPath + "selectAllVideoEnglishByPage";
+
+
+        console.log(url);
+        $.ajax({
+            url: url,
+            type: "get",
+            async: true,
+            dataType: "json",
+            //data: datas,
+            //异步   注意数据的获取
+            success: function (data) {
+                if (data.success == true) {
+                    /* videoEnglish_vm.datas=data.datas; */
+                    videoEnglish_vm.datas = data.datas.data;
+                    //分页
+                    $('#pageNow').text(data.datas.pageNow);
+                    $('#totalPage').text(data.datas.totalPage);
+                }
+            }
+        });
+    }
+
+
+    //function ajax(api,datas) {
+    $(document).ready(
+        selectVideoEnglish()
+    );
+
+
+    //分页
+
+
+    function nextPage() {
+        var pageNow = $('#pageNow').text();
+        var totalPage = $('#totalPage').text();
+
+        var nextPage = parseInt(pageNow) + 1;
+
+        if (nextPage <= totalPage && nextPage > 0) {
+
+
+            var url = 'selectAllVideoEnglishByPage';
+
+            var grade_id = $('#grade_menu').val();
+
+
+            var dataJson = {"pageNow": nextPage};
+
+            if (grade_id > 0) {
+                url = 'selectAllVideoEnglishByGradeByPage';
+                dataJson = {"pageNow": nextPage,"gradeId": grade_id};
+            }
+
+
+            //console.log('nextPage'+nextPage);
+
+            $.ajax({
+                url: url,
+                type: "get",
+                async: true,
+                dataType: "json",
+                data:dataJson ,
+                //异步   注意数据的获取
+                success: function (data) {
+                    console.log(data);
+                    // //总页数
+                    // var totalPage = data.datas.totalPage;
+                    // //现在页码
+                    // var pageNow = data.datas.pageNow;
+                    // if(nextPage>0&&nextPage<totalPage){
+                    if (data.success == true) {
+                        videoEnglish_vm.datas = data.datas.data;
+                        //分页
+                        $('#pageNow').text(data.datas.pageNow);
+                        $('#totalPage').text(data.datas.totalPage);
+                    }
+                    // }
+                }
+            });
+        }
+
+    }
+
+    function prevPage() {
+        var pageNow = $('#pageNow').text();
+        var totalPage = $('#totalPage').text();
+
+        var prevPage = parseInt(pageNow) - 1;
+
+        if (prevPage <= totalPage && prevPage > 0) {
+
+
+            var url = 'selectAllVideoEnglishByPage';
+
+            var grade_id = $('#grade_menu').val();
+
+            var dataJson = {"pageNow": prevPage};
+
+            if (grade_id > 0) {
+                url = 'selectAllVideoEnglishByGradeByPage';
+                dataJson = {"pageNow": prevPage,"gradeId": grade_id};
+            }
+
+
+            //console.log('prevPage'+prevPage);
+
+            $.ajax({
+                url: url,
+                type: "get",
+                async: true,
+                dataType: "json",
+                data: dataJson,
+                //异步   注意数据的获取
+                success: function (data) {
+                    console.log(data);
+                    // //总页数
+                    // var totalPage = data.datas.totalPage;
+                    // //现在页码
+                    // var pageNow = data.datas.pageNow;
+                    // if(prevPage>0&&prevPage<totalPage){
+                    if (data.success == true) {
+                        videoEnglish_vm.datas = data.datas.data;
+                        //分页
+                        $('#pageNow').text(data.datas.pageNow);
+                        $('#totalPage').text(data.datas.totalPage);
+                    }
+                    // }
+                }
+            });
+        }
+    }
+
+
+    function skipPage() {
+        var pageNow = $('#pageNow').text();
+        var totalPage = $('#totalPage').text();
+
+        var skipPage = $('#skipPageInput').val();
+
+        if (typeof skipPage !== "undefined"&&skipPage!=null&&skipPage!=''&&!isNaN(skipPage)&&skipPage <= totalPage && skipPage > 0) {
+            console.log(skipPage);
+
+            var url = 'selectAllVideoEnglishByPage';
+
+            var grade_id = $('#grade_menu').val();
+
+            var dataJson = {"pageNow": skipPage};
+
+            if (grade_id > 0) {
+                url = 'selectAllVideoEnglishByGradeByPage';
+                dataJson = {"pageNow": skipPage,"gradeId": grade_id};
+            }
+
+
+            //console.log('prevPage'+prevPage);
+
+            $.ajax({
+                url: url,
+                type: "get",
+                async: true,
+                dataType: "json",
+                data: dataJson,
+                //异步   注意数据的获取
+                success: function (data) {
+                    console.log(data);
+                    // //总页数
+                    // var totalPage = data.datas.totalPage;
+                    // //现在页码
+                    // var pageNow = data.datas.pageNow;
+                    // if(prevPage>0&&prevPage<totalPage){
+                    if (data.success == true) {
+                        videoEnglish_vm.datas = data.datas.data;
+                        //分页
+                        $('#pageNow').text(data.datas.pageNow);
+                        $('#totalPage').text(data.datas.totalPage);
+                    }
+                    // }
+                }
+            });
+        }
+    }
+
+
+</script>
+
+
+<script>
+    /*导入头部和尾部*/
+    $(document).ready(function () {
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+    });
+</script>
+</body>
+</html>
+
