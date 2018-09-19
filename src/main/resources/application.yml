@@ -2,22 +2,61 @@ server:
   port: 80
 
 
+#spring:
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    #druid 配置
+#    druid:
+#      driver-class-name: com.mysql.jdbc.Driver
+#      #基本属性
+#      url: jdbc:mysql://localhost:3306/easyenglish?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+#      username: root
+#      password: root
+#      #配置初始化大小/最小/最大
+#      initial-size: 1
+#      min-idle: 1
+#      max-active: 20
+#      #获取连接等待超时时间
+#      max-wait: 60000
+
 spring:
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    #druid 配置
-    druid:
-      driver-class-name: com.mysql.jdbc.Driver
-      #基本属性
-      url: jdbc:mysql://localhost:3306/easyenglish?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-      username: root
-      password: root
-      #配置初始化大小/最小/最大
-      initial-size: 1
-      min-idle: 1
-      max-active: 20
-      #获取连接等待超时时间
-      max-wait: 60000
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driverClassName: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
+    platform: mysql
+    url: jdbc:mysql://localhost:3306/easyenglish?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+#    session redia  setting
+
+
+#  session:
+#    store-type: redis
+#  redis:
+#    database: 0
+#    host: localhost
+#    password: root
+#    jedis:
+#      pool:
+#        max-active: 8
+#        max-idle: 8
+#        min-idle: 0
+#        max-wait: 6000ms
+#    port: 6379
+
+#    filters: stat,wall,log4j
+  session:
+    store-type: none
+
+
+
+
+
 
 mybatis:
   #注意：一定要对应mapper映射xml文件的所在路径
