@@ -591,7 +591,7 @@
     WHERE CONCAT(IFNULL(`title`,''),IFNULL(`author`,''),IFNULL(`digest`,''),IFNULL(`text`,''),IFNULL(`create_time`,''),IFNULL(`upload_time`,''),IFNULL(`unit`,''),IFNULL(`part`,''),IFNULL(`page`,''),IFNULL(`update_time`,''))IFNULL(`remark`,'')) LIKE '%#{keyWord}%'
   </select>
 
-  <select id="selectAllByGradeByPage" parameterType="com.way.vo.Page" resultMap="BaseResultMap">
+  <select id="selectAllByGradeByPage" parameterType="com.easyenglish.vo.Page" resultMap="BaseResultMap">
     select *
     from video_english
 
@@ -600,7 +600,7 @@
   </select>
 
 
-  <select id="selectAllByTextBookByPage" parameterType="com.way.vo.Page" resultMap="BaseResultMap">
+  <select id="selectAllByTextBookByPage" parameterType="com.easyenglish.vo.Page" resultMap="BaseResultMap">
     select *
     from video_english
     where textbook = #{textbook}
