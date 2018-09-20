@@ -22,7 +22,7 @@ server:
 
 spring:
   datasource:
-#    type: com.alibaba.druid.pool.DruidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
 #    driverClassName: com.mysql.jdbc.Driver
     driver-class-name: com.mysql.jdbc.Driver
     platform: mysql
