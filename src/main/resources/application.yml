@@ -1,5 +1,6 @@
 server:
   port: 80
+  session-timeout: 180
 
 
 #spring:
@@ -23,7 +24,7 @@ server:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-#    driverClassName: com.mysql.jdbc.Driver
+    #    driverClassName: com.mysql.jdbc.Driver
     driver-class-name: com.mysql.jdbc.Driver
     platform: mysql
     url: jdbc:mysql://localhost:3306/easyenglish?useUnicode=true&characterEncoding=utf-8&useSSL=false
@@ -33,26 +34,46 @@ spring:
     minIdle: 5
     maxActive: 20
     maxWait: 60000
-#    session redia  setting
 
 
-#  session:
-#    store-type: redis
-#  redis:
-#    database: 0
-#    host: localhost
-#    password: root
-#    jedis:
-#      pool:
-#        max-active: 8
-#        max-idle: 8
-#        min-idle: 0
-#        max-wait: 6000ms
-#    port: 6379
-
-#    filters: stat,wall,log4j
   session:
-    store-type: none
+    store-type: redis
+
+
+
+  #    session redia  setting
+
+
+  #  session:
+  #    store-type: redis
+  #  redis:
+  #    database: 0
+  #    host: localhost
+  #    password: root
+  #    jedis:
+  #      pool:
+  #        max-active: 8
+  #        max-idle: 8
+  #        min-idle: 0
+  #        max-wait: 6000ms
+  #    port: 6379
+
+  #    filters: stat,wall,log4j
+  redis:
+    database: 0
+    host: 111.230.49.98
+    port: 6379
+    password: 2819981gg
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+
+
+
+
+
 
 
 
