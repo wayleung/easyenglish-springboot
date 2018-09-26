@@ -19,7 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //因为WebSecurityConfigurer只能一个 所以要有顺序 否则报错
 @Order(1)
 //@EnableWebSecurity
-public class MySecurityConfig extends WebSecurityConfigurerAdapter {
+public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyUserDetailsService myUserDetailsService;
 
@@ -45,16 +45,23 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .csrf().disable();// 关闭csrf防护
 
-        http.mvcMatcher("/user/**").formLogin()//  定义当需要用户登录时候，转到的登录页面。
+        http.antMatcher("/user/**").formLogin()//  定义当需要用户登录时候，转到的登录页面。
                 .loginPage("/user/login.html")   //// 设置登录页面
                 .loginProcessingUrl("/user/userLogin")  // 自定义的登录接口
+//                .defaultSuccessUrl("/user/userLogin")  // 自定义的登录接口
                 .and()
+
                 .authorizeRequests() // 定义哪些URL需要被保护、哪些不需要被保护
-                .antMatchers("/user/login.html","/user/authCode/**","/admin/login.html","/admin/authCode/**").permitAll()
+                .antMatchers("/user/login.html", "/user/authCode/**", "/admin/login.html", "/admin/authCode/**").permitAll()
                 .anyRequest()// 任何请求,登录后可以访问
                 .authenticated()
-                .and()
-              .csrf().disable()// 关闭csrf防护
+                // logout
+                .and().logout().logoutUrl("/user/userLogout")
+                .logoutSuccessUrl("/user/login.html").deleteCookies().and()
+                .csrf().disable()// 关闭csrf防护
+
+        ;
+
 
 //                .mvcMatcher("/admin/**").formLogin()//  定义当需要用户登录时候，转到的登录页面。
 //                .loginPage("/admin/login.html")   //// 设置登录页面
